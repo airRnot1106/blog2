@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "format": "biome format --write"
+    "lint": "oxlint --type-aware && eslint",
+    "format": "biome format --write",
+    "check": "pnpm lint && pnpm format"
   },
   "dependencies": {
     "next": "16.0.3",
@@ -23,6 +24,10 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
+    "eslint-plugin-oxlint": "^1.29.0",
+    "jiti": "^2.6.1",
+    "oxlint": "^1.29.0",
+    "oxlint-tsgolint": "^0.8.1",
     "typescript": "^5"
   }
 }
