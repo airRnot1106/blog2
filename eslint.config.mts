@@ -13,6 +13,7 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+    'styled-system/**',
   ]),
   // Clean up oxlint configs to avoid exactOptionalPropertyTypes issues
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json').map((config) => {
