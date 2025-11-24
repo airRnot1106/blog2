@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "oxlint --type-aware && eslint",
     "lint:markup": "markuplint \"src/**/*.{html,jsx,tsx}\" --fix --problem-only",
-    "format": "biome format --write",
+    "format": "biome check --write",
     "tsc": "tsc --noEmit",
     "check": "concurrently pnpm:tsc pnpm:lint pnpm:lint:markup && pnpm format",
     "test:storybook": "vitest --project=storybook",
