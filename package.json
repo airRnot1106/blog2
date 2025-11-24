@@ -48,6 +48,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
     "eslint-plugin-oxlint": "^1.29.0",
+    "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "eslint-plugin-storybook": "^10.0.8",
     "fast-check": "^4.3.0",
     "jiti": "^2.6.1",

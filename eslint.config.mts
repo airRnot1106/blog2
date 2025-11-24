@@ -2,6 +2,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
 import oxlint from 'eslint-plugin-oxlint';
+import reactCompiler from 'eslint-plugin-react-compiler';
 import storybook from 'eslint-plugin-storybook';
 
 const eslintConfig = defineConfig([
@@ -17,6 +18,7 @@ const eslintConfig = defineConfig([
     'styled-system/**',
     '!.storybook',
   ]),
+  reactCompiler.configs.recommended,
   // Clean up storybook configs to avoid exactOptionalPropertyTypes issues
   ...storybook.configs['flat/recommended'].map((config) => {
     const cleaned: Record<string, unknown> = {};
