@@ -11,7 +11,7 @@
     "lint:markup": "markuplint \"src/**/*.{html,jsx,tsx}\" --fix --problem-only",
     "format": "biome format --write",
     "tsc": "tsc --noEmit",
-    "check": "pnpm tsc & pnpm lint & pnpm lint:markup && pnpm format"
+    "check": "concurrently pnpm:tsc pnpm:lint pnpm:lint:markup && pnpm format"
   },
   "dependencies": {
     "next": "16.0.3",
@@ -28,6 +28,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
     "eslint-plugin-oxlint": "^1.29.0",
