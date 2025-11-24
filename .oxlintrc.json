@@ -20,7 +20,8 @@
     "out/**",
     "build/**",
     "next-env.d.ts",
-    "styled-system/**"
+    "styled-system/**",
+    "!.storybook"
   ],
   "rules": {
     "@next/next/google-font-display": "warn",
