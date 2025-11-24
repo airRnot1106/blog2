@@ -1,5 +1,11 @@
 {
   "mcpServers": {
+    "byethrow": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@praha/byethrow-mcp"],
+      "env": {}
+    },
     "chrome-devtools": {
       "type": "stdio",
       "command": "npx",
