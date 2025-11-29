@@ -16,4 +16,4 @@ pre-push:
   commands:
     tsc:
       glob: "*.{ts,cts,mts,tsx}"
-      run: pnpm tsgo --noEmit
+      run: pnpm tsc --noEmit
