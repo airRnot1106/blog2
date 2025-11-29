@@ -9,7 +9,8 @@
     "lint": "oxlint --type-aware --fix && eslint --fix",
     "lint:markup": "markuplint \"src/**/*.{html,jsx,tsx}\" --fix --problem-only",
     "format": "biome check --write",
-    "tsc": "tsgo --noEmit"
+    "tsc": "tsgo --noEmit",
+    "check": "concurrently pnpm:tsc pnpm:lint pnpm:lint:markup && pnpm format"
   },
   "dependencies": {
     "next": "16.0.5",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^19",
     "@typescript/native-preview": "7.0.0-dev.20251128.1",
     "babel-plugin-react-compiler": "1.0.0",
+    "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.0.5",
     "eslint-config-prettier": "^10.1.8",
