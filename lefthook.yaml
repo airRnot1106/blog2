@@ -1,0 +1,19 @@
+pre-commit:
+  commands:
+    lint:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: pnpm oxlint --type-aware {staged_files} && pnpm eslint {staged_files}
+      stage_fixed: true
+    format:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: pnpm biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+    markuplint:
+      glob: "*.{html,jsx,tsx}"
+      run: pnpm markuplint {staged_files} --fix --problem-only
+      stage_fixed: true
+pre-push:
+  commands:
+    tsc:
+      glob: "*.{ts,cts,mts,tsx}"
+      run: pnpm tsgo --noEmit
