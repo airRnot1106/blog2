@@ -15,7 +15,13 @@
   "env": {
     "builtin": true
   },
-  "ignorePatterns": [".next/**", "out/**", "build/**", "next-env.d.ts"],
+  "ignorePatterns": [
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "styled-system/**"
+  ],
   "rules": {
     "@next/next/google-font-display": "warn",
     "@next/next/google-font-preconnect": "warn",

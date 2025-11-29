@@ -1,3 +1,4 @@
+import panda from '@pandacss/eslint-plugin';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
@@ -16,9 +17,15 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+    'styled-system/**',
   ]),
   reactCompiler.configs.recommended,
   reactYouMightNotNeedAnEffect.configs.recommended,
+  {
+    name: 'panda/recommended',
+    plugins: { '@pandacss': panda },
+    rules: panda.configs.recommended.rules,
+  },
   eslintConfigPrettier,
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 ]);
