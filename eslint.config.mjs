@@ -6,6 +6,7 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import oxlint from 'eslint-plugin-oxlint';
 import reactCompiler from 'eslint-plugin-react-compiler';
 import reactYouMightNotNeedAnEffect from 'eslint-plugin-react-you-might-not-need-an-effect';
+import storybook from 'eslint-plugin-storybook';
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -18,6 +19,7 @@ const eslintConfig = defineConfig([
     'build/**',
     'next-env.d.ts',
     'styled-system/**',
+    '!.storybook',
   ]),
   reactCompiler.configs.recommended,
   reactYouMightNotNeedAnEffect.configs.recommended,
@@ -26,6 +28,7 @@ const eslintConfig = defineConfig([
     plugins: { '@pandacss': panda },
     rules: panda.configs.recommended.rules,
   },
+  ...storybook.configs['flat/recommended'],
   eslintConfigPrettier,
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 ]);
