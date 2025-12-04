@@ -1,5 +1,25 @@
 {
   "mcpServers": {
+    "byethrow": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@praha/byethrow-mcp"],
+      "env": {}
+    },
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["chrome-devtools-mcp@latest"],
+      "env": {}
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "next-devtools": {
+      "command": "npx",
+      "args": ["-y", "next-devtools-mcp@latest"]
+    },
     "storybook-mcp": {
       "type": "http",
       "url": "http://localhost:6006/mcp"
