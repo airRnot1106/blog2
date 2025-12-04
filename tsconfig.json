@@ -19,7 +19,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "types": ["vitest/importMeta"]
   },
   "include": [
     "next-env.d.ts",
