@@ -51,3 +51,10 @@
 :root[data-theme="system"] {
   color-scheme: light dark;
 }
+
+body {
+  @media (width < 375px) {
+    zoom: progress(100lvw, 0px, 375px);
+    -webkit-text-size-adjust: initial;
+  }
+}
