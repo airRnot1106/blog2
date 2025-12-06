@@ -66,6 +66,7 @@
     "jsdom": "^27.2.0",
     "lefthook": "^2.0.4",
     "markuplint": "^4.14.0",
+    "msw": "^2.12.4",
     "oxlint": "^1.30.0",
     "oxlint-tsgolint": "^0.8.3",
     "playwright": "^1.57.0",
@@ -73,5 +74,10 @@
     "typescript": "^5",
     "vite": "^7.2.6",
     "vitest": "^4.0.15"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
