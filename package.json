@@ -11,7 +11,10 @@
     "lint": "eslint",
     "lint:markup": "markuplint \"src/**/*.{html,jsx,tsx}\" --fix --problem-only",
     "format": "oxfmt",
-    "format:check": "oxfmt --check"
+    "format:check": "oxfmt --check",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:node": "vitest run --project=node"
   },
   "dependencies": {
     "kiso.css": "^1.2.4",
@@ -27,13 +30,15 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^4.1.10",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
     "lefthook": "^2.1.10",
     "markuplint": "5.0.0-rc.4",
     "oxfmt": "^0.62.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.10"
   },
   "packageManager": "pnpm@11.18.0"
 }

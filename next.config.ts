@@ -3,6 +3,11 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
+  compiler: {
+    define: {
+      'import.meta.vitest': false,
+    },
+  },
   experimental: {
     optimizePackageImports: [],
   },
