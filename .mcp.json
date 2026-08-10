@@ -3,6 +3,10 @@
     "panda": {
       "command": "npx",
       "args": ["-y", "@pandacss/mcp"]
+    },
+    "storybook": {
+      "type": "http",
+      "url": "http://localhost:6006/mcp"
     }
   }
 }

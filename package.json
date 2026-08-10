@@ -14,7 +14,10 @@
     "format:check": "oxfmt --check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:node": "vitest run --project=node"
+    "test:node": "vitest run --project=node",
+    "test:storybook": "vitest run --project=storybook",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "kiso.css": "^1.2.4",
@@ -23,21 +26,33 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@akfm/vite-plugin-storybook-mock-server-functions": "^0.0.0",
+    "@chromatic-com/storybook": "latest",
     "@markuplint/jsx-parser": "5.0.0-rc.4",
     "@markuplint/react-spec": "5.0.0-rc.4",
     "@pandacss/dev": "^1.12.0",
+    "@storybook/addon-a11y": "^10.5.7",
+    "@storybook/addon-docs": "^10.5.7",
+    "@storybook/addon-mcp": "latest",
+    "@storybook/addon-vitest": "^10.5.7",
+    "@storybook/nextjs-vite": "^10.5.7",
     "@tsconfig/strictest": "^2.0.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/browser-playwright": "4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
+    "eslint-plugin-storybook": "^10.5.7",
     "lefthook": "^2.1.10",
     "markuplint": "5.0.0-rc.4",
     "oxfmt": "^0.62.0",
+    "playwright": "latest",
+    "storybook": "^10.5.7",
     "typescript": "^5",
+    "vite": "latest",
     "vitest": "^4.1.10"
   },
   "packageManager": "pnpm@11.18.0"
