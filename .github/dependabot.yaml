@@ -1,0 +1,59 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+    commit-message:
+      prefix: 'chore(ci)'
+    labels:
+      - 'dependencies'
+      - 'github-actions'
+
+  - package-ecosystem: 'nix'
+    directories:
+      - '/'
+    schedule:
+      interval: 'weekly'
+    cooldown:
+      default-days: 7
+    groups:
+      flake-inputs:
+        patterns:
+          - '*'
+    commit-message:
+      prefix: 'chore(nix)'
+    labels:
+      - 'dependencies'
+      - 'nix'
+
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 10
+    groups:
+      dependencies:
+        dependency-type: 'production'
+        update-types:
+          - 'minor'
+          - 'patch'
+      dev-dependencies:
+        dependency-type: 'development'
+        update-types:
+          - 'minor'
+          - 'patch'
+    commit-message:
+      prefix: 'chore(deps)'
+      prefix-development: 'chore(deps-dev)'
+    labels:
+      - 'dependencies'
+      - 'npm'
