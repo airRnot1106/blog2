@@ -26,6 +26,7 @@ export default defineConfig({
           environment: 'node',
           include: ['src/**/*.test.{ts,tsx}'],
           includeSource: ['src/**/*.{ts,tsx}'],
+          setupFiles: [path.join(dirname, 'src/mocks/vitest.setup.ts')],
         },
       },
       {

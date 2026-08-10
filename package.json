@@ -48,6 +48,8 @@
     "eslint-plugin-storybook": "^10.5.7",
     "lefthook": "^2.1.10",
     "markuplint": "5.0.0-rc.4",
+    "msw": "^2.15.0",
+    "msw-storybook-addon": "^3.0.0",
     "oxfmt": "^0.62.0",
     "playwright": "latest",
     "storybook": "^10.5.7",
@@ -55,5 +57,10 @@
     "vite": "latest",
     "vitest": "^4.1.10"
   },
-  "packageManager": "pnpm@11.18.0"
+  "packageManager": "pnpm@11.18.0",
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
 }
