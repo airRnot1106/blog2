@@ -54,3 +54,6 @@ styled-system-studio
 # storybook
 *storybook.log
 storybook-static
+
+# playwright
+.playwright-cli
