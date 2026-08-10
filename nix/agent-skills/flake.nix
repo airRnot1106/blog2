@@ -8,6 +8,10 @@
       url = "github:anthropics/skills";
       flake = false;
     };
+    markuplint = {
+      url = "github:markuplint/markuplint";
+      flake = false;
+    };
     playwright-cli = {
       url = "github:microsoft/playwright-cli";
       flake = false;
@@ -46,6 +50,22 @@
             name = "frontend-design";
             src = inputs.anthropic-skills;
             subpath = "skills/frontend-design";
+          }
+          {
+            name = "markuplint";
+            src = inputs.markuplint;
+            subpath = "skills/markuplint";
+          }
+          {
+            name = "markuplint-configure";
+            src = inputs.markuplint;
+            subpath = "skills/markuplint-configure";
+
+          }
+          {
+            name = "markuplint-setup";
+            src = inputs.markuplint;
+            subpath = "skills/markuplint-setup";
           }
           {
             name = "playwright-cli";

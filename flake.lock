@@ -25,6 +25,7 @@
         "flake-utils": [
           "flake-utils"
         ],
+        "markuplint": "markuplint",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -178,6 +179,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "markuplint": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783393161,
+        "narHash": "sha256-yD+5+iCINNEhEzueta0vV5L9QtCIKcTlfnRCnWn6zmU=",
+        "owner": "markuplint",
+        "repo": "markuplint",
+        "rev": "9885141fbd68835c3451035ea07117670be6263c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "markuplint",
+        "repo": "markuplint",
         "type": "github"
       }
     },
