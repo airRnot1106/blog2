@@ -29,6 +29,13 @@ in
       entry = "${getExe package} git --pre-commit --redact --staged --verbose";
       pass_filenames = false;
     };
+    lefthook = rec {
+      enable = true;
+      package = pkgs.pnpm_11;
+      extraPackages = [ package ];
+      entry = "${getExe package} exec lefthook run pre-commit";
+      pass_filenames = false;
+    };
     nixfmt.enable = true;
     pinact = rec {
       enable = true;

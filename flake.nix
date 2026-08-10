@@ -24,11 +24,17 @@
         pkgs = import inputs.nixpkgs {
           inherit system;
         };
+        gitHooks = inputs.git-hooks.lib.${system}.run (
+          import ./nix/git-hooks.nix {
+            inherit self pkgs;
+            inherit (inputs) nur-packages;
+          }
+        );
       in
       {
         devShells.default =
           let
-            inherit (self.checks.${system}.git-hooks) shellHook enabledPackages;
+            inherit (gitHooks) shellHook enabledPackages;
           in
           pkgs.mkShellNoCC {
             inherit shellHook;
@@ -47,22 +53,13 @@
 
         formatter =
           let
-            config = self.checks.${system}.git-hooks.config;
+            config = gitHooks.config;
             inherit (config) package configFile;
             script = ''
               ${pkgs.lib.getExe package} run --all-files --config ${configFile}
             '';
           in
           pkgs.writeShellScriptBin "pre-commit-run" script;
-
-        checks = {
-          git-hooks = inputs.git-hooks.lib.${system}.run (
-            import ./nix/git-hooks.nix {
-              inherit self pkgs;
-              inherit (inputs) nur-packages;
-            }
-          );
-        };
 
         nput = {
           inherit (inputs.agent-skills.nput.${system}) skills-claude;

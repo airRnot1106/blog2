@@ -1,0 +1,17 @@
+no_auto_install: true
+
+pre-commit:
+  parallel: true
+  commands:
+    oxfmt:
+      glob:
+        - '*.{js,jsx,ts,tsx,mjs,cjs,mts,cts,json,jsonc,css,md,mdx,yml,yaml}'
+      exclude:
+        - pnpm-lock.yaml
+      run: pnpm exec oxfmt {staged_files}
+      stage_fixed: true
+    markuplint:
+      glob:
+        - 'src/**/*.{html,jsx,tsx}'
+      run: pnpm exec markuplint {staged_files} --fix --problem-only
+      stage_fixed: true
