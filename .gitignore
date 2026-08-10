@@ -46,3 +46,7 @@ next-env.d.ts
 .claude/skills
 .direnv
 .pre-commit-config.yaml
+
+# panda
+styled-system
+styled-system-studio
