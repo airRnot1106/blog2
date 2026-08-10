@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { styled } from '../../styled-system/jsx';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -10,7 +12,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <styled.body position="relative">
+        <styled.div isolation="isolate">{children}</styled.div>
+      </styled.body>
     </html>
   );
 }
