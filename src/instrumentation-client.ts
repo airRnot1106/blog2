@@ -1,6 +1,5 @@
-export {};
-
 if (process.env['NEXT_PUBLIC_API_MOCKING'] === 'enabled') {
-  const { worker } = await import('./mocks/browser');
-  await worker.start({ onUnhandledRequest: 'bypass' });
+  void import('./mocks/browser').then(async ({ worker }) =>
+    worker.start({ onUnhandledRequest: 'bypass' }),
+  );
 }
