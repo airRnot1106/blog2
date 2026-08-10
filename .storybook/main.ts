@@ -8,6 +8,7 @@ export default defineMain({
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
     '@storybook/addon-mcp',
+    '@storybook/addon-themes',
   ],
   features: {
     experimentalRSC: true,

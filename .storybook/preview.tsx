@@ -2,16 +2,34 @@
 import { withServerFunctionMocks } from '@akfm/vite-plugin-storybook-mock-server-functions/runtime';
 import addonA11y from '@storybook/addon-a11y';
 import addonDocs from '@storybook/addon-docs';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import addonVitest from '@storybook/addon-vitest';
 import { definePreview } from '@storybook/nextjs-vite';
 import addonMsw from 'msw-storybook-addon';
+import { ThemeProvider } from 'next-themes';
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import '../src/app/globals.css';
 
 export default definePreview({
   addons: [addonA11y(), addonDocs(), addonVitest(), addonMsw()],
-  decorators: [withServerFunctionMocks],
+  decorators: [
+    withServerFunctionMocks,
+    withThemeByDataAttribute({
+      themes: {
+        light: 'light',
+        dark: 'dark',
+        system: 'system',
+      },
+      defaultTheme: 'system',
+      attributeName: 'data-theme',
+    }),
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     a11y: {
       // 'todo' - show a11y violations in the test UI only

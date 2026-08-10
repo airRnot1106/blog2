@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 
 import { styled } from '../../styled-system/jsx';
 
@@ -13,7 +14,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en">
       <styled.body position="relative">
-        <styled.div isolation="isolate">{children}</styled.div>
+        <ThemeProvider>
+          <styled.div isolation="isolate">{children}</styled.div>
+        </ThemeProvider>
       </styled.body>
     </html>
   );
