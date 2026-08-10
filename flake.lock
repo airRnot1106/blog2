@@ -26,6 +26,7 @@
           "flake-utils"
         ],
         "markuplint": "markuplint",
+        "nextjs": "nextjs",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -224,6 +225,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "namaka",
+        "type": "github"
+      }
+    },
+    "nextjs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786361335,
+        "narHash": "sha256-Iit2TXpCBxvu/WMtZHefPEfNfnQ3906ZZGRQ4fFERUk=",
+        "owner": "vercel",
+        "repo": "next.js",
+        "rev": "259abbba51a933d852e031cf7ae861e8e0a0fe2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vercel",
+        "repo": "next.js",
         "type": "github"
       }
     },

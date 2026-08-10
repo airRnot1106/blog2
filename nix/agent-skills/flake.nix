@@ -12,6 +12,10 @@
       url = "github:markuplint/markuplint";
       flake = false;
     };
+    nextjs = {
+      url = "github:vercel/next.js";
+      flake = false;
+    };
     playwright-cli = {
       url = "github:microsoft/playwright-cli";
       flake = false;
@@ -66,6 +70,26 @@
             name = "markuplint-setup";
             src = inputs.markuplint;
             subpath = "skills/markuplint-setup";
+          }
+          {
+            name = "next-cache-components-adoption";
+            src = inputs.nextjs;
+            subpath = "skills/next-cache-components-adoption";
+          }
+          {
+            name = "next-cache-components-optimizer";
+            src = inputs.nextjs;
+            subpath = "skills/next-cache-components-optimizer";
+          }
+          {
+            name = "next-dev-loop";
+            src = inputs.nextjs;
+            subpath = "skills/next-dev-loop";
+          }
+          {
+            name = "next-partial-prefetching-adoption";
+            src = inputs.nextjs;
+            subpath = "skills/next-partial-prefetching-adoption";
           }
           {
             name = "playwright-cli";
