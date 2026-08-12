@@ -41,6 +41,11 @@
 
         skills = [
           {
+            name = "component-implementation";
+            src = ../../skills;
+            subpath = "component-implementation";
+          }
+          {
             name = "composition-patterns";
             src = inputs.vercel-labs;
             subpath = "skills/composition-patterns";
@@ -105,6 +110,11 @@
             name = "react-view-transitions";
             src = inputs.vercel-labs;
             subpath = "skills/react-view-transitions";
+          }
+          {
+            name = "responsive-design";
+            src = ../../skills;
+            subpath = "responsive-design";
           }
           {
             name = "vercel-optimize";
