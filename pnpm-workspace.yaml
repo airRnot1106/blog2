@@ -1,6 +1,6 @@
 allowBuilds:
   esbuild: false
   lefthook: false
-  msw: true
+  msw: false
   sharp: false
   unrs-resolver: false
