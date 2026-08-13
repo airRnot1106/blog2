@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useState } from 'react';
 import { expect, fn, screen, userEvent, waitFor, within } from 'storybook/test';
 
 import preview from '../../../../.storybook/preview';
@@ -29,6 +30,33 @@ const DropdownDemo: FC<DropdownDemoProps> = ({
         <Dropdown.Item disabled={deleteDisabled} onClick={onDeleteClick}>
           Delete
         </Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown.Root>
+  );
+};
+
+type RadioDropdownDemoProps = {
+  onValueChange?: (value: string) => void;
+};
+
+const RadioDropdownDemo: FC<RadioDropdownDemoProps> = ({ onValueChange }) => {
+  const [value, setValue] = useState('light');
+
+  return (
+    <Dropdown.Root>
+      <Dropdown.Trigger>Theme</Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.RadioGroup
+          value={value}
+          onValueChange={(next: string) => {
+            setValue(next);
+            onValueChange?.(next);
+          }}
+        >
+          <Dropdown.RadioItem value="light">Light</Dropdown.RadioItem>
+          <Dropdown.RadioItem value="dark">Dark</Dropdown.RadioItem>
+          <Dropdown.RadioItem value="system">System</Dropdown.RadioItem>
+        </Dropdown.RadioGroup>
       </Dropdown.Content>
     </Dropdown.Root>
   );
@@ -82,6 +110,32 @@ export const CustomTrigger = meta.story({
 
     await userEvent.click(trigger);
     await screen.findByRole('menuitem', { name: 'Edit' });
+  },
+});
+
+const onRadioValueChange = fn();
+
+export const WithRadioItems = meta.story({
+  render: () => <RadioDropdownDemo onValueChange={onRadioValueChange} />,
+  async play({ canvasElement }) {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole('button', { name: 'Theme' });
+
+    await userEvent.click(trigger);
+
+    const lightItem = await screen.findByRole('menuitemradio', { name: 'Light' });
+    const darkItem = await screen.findByRole('menuitemradio', { name: 'Dark' });
+
+    await expect(lightItem).toHaveAttribute('aria-checked', 'true');
+    await expect(darkItem).toHaveAttribute('aria-checked', 'false');
+
+    await userEvent.click(darkItem);
+
+    await waitFor(async () => expect(darkItem).toHaveAttribute('aria-checked', 'true'));
+    await waitFor(async () => expect(lightItem).toHaveAttribute('aria-checked', 'false'));
+    await waitFor(async () => expect(onRadioValueChange).toHaveBeenCalledWith('dark'));
+    // Radio items keep the menu open on selection, unlike plain items.
+    await expect(trigger).toHaveAttribute('aria-expanded', 'true');
   },
 });
 

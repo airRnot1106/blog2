@@ -1,7 +1,7 @@
 'use client';
 
 import { Menu } from '@base-ui/react/menu';
-import { ChevronDown } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import type { ComponentProps, FC } from 'react';
 
 import { styled } from '../../../../styled-system/jsx';
@@ -31,13 +31,21 @@ export type DropdownContentProps = Omit<ComponentProps<typeof Menu.Popup>, 'styl
   };
 };
 
+export type DropdownItemStyle = {
+  '--dropdown-item--color'?: string;
+  '--dropdown-item--highlighted-bg'?: string;
+  '--dropdown-item--font-size'?: string;
+  '--dropdown-item--font-weight'?: string;
+};
+
 export type DropdownItemProps = Omit<ComponentProps<typeof Menu.Item>, 'style'> & {
-  style?: {
-    '--dropdown-item--color'?: string;
-    '--dropdown-item--highlighted-bg'?: string;
-    '--dropdown-item--font-size'?: string;
-    '--dropdown-item--font-weight'?: string;
-  };
+  style?: DropdownItemStyle;
+};
+
+export type DropdownRadioGroupProps = ComponentProps<typeof Menu.RadioGroup>;
+
+export type DropdownRadioItemProps = Omit<ComponentProps<typeof Menu.RadioItem>, 'style'> & {
+  style?: DropdownItemStyle;
 };
 
 export type DropdownSeparatorProps = ComponentProps<typeof Menu.Separator>;
@@ -151,33 +159,52 @@ const PopupRoot = styled(Menu.Popup, {
   },
 });
 
-const ItemRoot = styled(Menu.Item, {
-  base: {
-    '--_color': 'var(--dropdown-item--color, token(colors.text))',
-    '--_highlighted-bg':
-      'var(--dropdown-item--highlighted-bg, color-mix(in oklab, token(colors.muted) 10%, transparent))',
-    '--_font-size': 'var(--dropdown-item--font-size, token(fontSizes.sm))',
-    '--_font-weight': 'var(--dropdown-item--font-weight, normal)',
+const itemBaseStyle = {
+  '--_color': 'var(--dropdown-item--color, token(colors.text))',
+  '--_highlighted-bg':
+    'var(--dropdown-item--highlighted-bg, color-mix(in oklab, token(colors.muted) 10%, transparent))',
+  '--_font-size': 'var(--dropdown-item--font-size, token(fontSizes.sm))',
+  '--_font-weight': 'var(--dropdown-item--font-weight, normal)',
 
-    display: 'flex',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '2',
+  padding: '2',
+  borderRadius: '0.25rem',
+  backgroundColor: 'transparent',
+  color: 'var(--_color)',
+  fontSize: 'var(--_font-size)',
+  fontWeight: 'var(--_font-weight)',
+  cursor: 'pointer',
+  transitionProperty: 'background-color, color',
+  transitionDuration: '100ms',
+  transitionTimingFunction: 'ease',
+  '&[data-highlighted]': {
+    backgroundColor: 'var(--_highlighted-bg)',
+  },
+  '&[data-disabled]': {
+    color: 'muted',
+    cursor: 'not-allowed',
+  },
+};
+
+const ItemRoot = styled(Menu.Item, {
+  base: itemBaseStyle,
+});
+
+const RadioItemRoot = styled(Menu.RadioItem, {
+  base: itemBaseStyle,
+});
+
+const RadioItemIndicatorRoot = styled(Menu.RadioItemIndicator, {
+  base: {
+    display: 'inline-flex',
     alignItems: 'center',
-    gap: '2',
-    padding: '2',
-    borderRadius: '0.25rem',
-    backgroundColor: 'transparent',
-    color: 'var(--_color)',
-    fontSize: 'var(--_font-size)',
-    fontWeight: 'var(--_font-weight)',
-    cursor: 'pointer',
-    transitionProperty: 'background-color, color',
-    transitionDuration: '100ms',
-    transitionTimingFunction: 'ease',
-    '&[data-highlighted]': {
-      backgroundColor: 'var(--_highlighted-bg)',
-    },
-    '&[data-disabled]': {
-      color: 'muted',
-      cursor: 'not-allowed',
+    justifyContent: 'center',
+    marginInlineStart: 'auto',
+    '& > svg': {
+      width: '4',
+      height: '4',
     },
   },
 });
@@ -251,6 +278,21 @@ export const Item: FC<DropdownItemProps> = ({ style, ...rest }) => {
   return <ItemRoot style={style} {...rest} />;
 };
 
+export const RadioGroup: FC<DropdownRadioGroupProps> = (props) => {
+  return <Menu.RadioGroup {...props} />;
+};
+
+export const RadioItem: FC<DropdownRadioItemProps> = ({ style, children, ...rest }) => {
+  return (
+    <RadioItemRoot style={style} {...rest}>
+      {children}
+      <RadioItemIndicatorRoot>
+        <Check aria-hidden="true" />
+      </RadioItemIndicatorRoot>
+    </RadioItemRoot>
+  );
+};
+
 export const GroupLabel: FC<DropdownGroupLabelProps> = ({ style, ...rest }) => {
   return <GroupLabelRoot style={style} {...rest} />;
 };
@@ -260,6 +302,8 @@ export const Dropdown = {
   Trigger,
   Content,
   Item,
+  RadioGroup,
+  RadioItem,
   Separator,
   Group,
   GroupLabel,
