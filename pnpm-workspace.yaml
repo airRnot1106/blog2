@@ -4,3 +4,11 @@ allowBuilds:
   msw: false
   sharp: false
   unrs-resolver: false
+minimumReleaseAge: 10080
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 43200
+blockExoticSubdeps: true
+strictDepBuilds: true
+minimumReleaseAgeExclude:
+  - '@wrksz/themes@1.2.0'
+  - lucide-react@1.30.0
