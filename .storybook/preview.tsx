@@ -5,8 +5,8 @@ import addonDocs from '@storybook/addon-docs';
 import addonThemes, { withThemeByDataAttribute } from '@storybook/addon-themes';
 import addonVitest from '@storybook/addon-vitest';
 import { definePreview } from '@storybook/nextjs-vite';
+import { ThemeProvider } from '@wrksz/themes';
 import addonMsw from 'msw-storybook-addon';
-import { ThemeProvider } from 'next-themes';
 import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 
 import '../src/app/globals.css';

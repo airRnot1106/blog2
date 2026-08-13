@@ -1,5 +1,5 @@
+import { ThemeProvider } from '@wrksz/themes/next';
 import type { Metadata } from 'next';
-import { ThemeProvider } from 'next-themes';
 
 import { styled } from '../../styled-system/jsx';
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <styled.body position="relative">
         <ThemeProvider>
           <styled.div isolation="isolate">{children}</styled.div>
