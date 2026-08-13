@@ -39,6 +39,12 @@ export default defineConfig({
       },
     },
     extend: {
+      keyframes: {
+        spin: {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
+        },
+      },
       tokens: {
         fontSizes: {
           xs: { value: '0.75rem' },
