@@ -39,35 +39,21 @@ export default defineConfig({
           }),
         ],
         test: {
-          name: 'storybook-light',
+          name: 'storybook',
           browser: {
             enabled: true,
             headless: true,
-            provider: playwright({ contextOptions: { colorScheme: 'light' } }),
+            provider: playwright(),
             instances: [
               {
                 browser: 'chromium',
+                name: 'storybook-light',
+                provider: playwright({ contextOptions: { colorScheme: 'light' } }),
               },
-            ],
-          },
-        },
-      },
-      {
-        extends: true,
-        plugins: [
-          storybookTest({
-            configDir: path.join(dirname, '.storybook'),
-          }),
-        ],
-        test: {
-          name: 'storybook-dark',
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({ contextOptions: { colorScheme: 'dark' } }),
-            instances: [
               {
                 browser: 'chromium',
+                name: 'storybook-dark',
+                provider: playwright({ contextOptions: { colorScheme: 'dark' } }),
               },
             ],
           },
