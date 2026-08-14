@@ -1,4 +1,7 @@
+'use client';
+
 import { SiGithub } from '@icons-pack/react-simple-icons';
+import { useHydrated } from '@wrksz/themes/client';
 import { Rss } from 'lucide-react';
 import Link from 'next/link';
 import type { ComponentProps, FC } from 'react';
@@ -27,7 +30,6 @@ const Layout = styled('div', {
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: '4',
-    animation: '--fade-in 4800ms cubic-bezier(0.22, 1, 0.36, 1)',
   },
 });
 
@@ -49,19 +51,32 @@ const Nav = styled('nav', {
   },
 });
 
-const LinkArea = styled('div', {
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '4',
-  },
-});
+// TODO: 記事一覧実装後に反映させる
+// const LinkArea = styled('div', {
+//   base: {
+//     display: 'flex',
+//     alignItems: 'center',
+//     gap: '4',
+//   },
+// });
 
+// `SiteThemeSwitchDropdown`'s icon only resolves after hydration, while the
+// GitHub/RSS icons beside it are static and render on first paint. Fading
+// the whole cluster in together — instead of letting the theme icon pop in
+// alone a moment later — keeps the reveal timing consistent across the row.
 const ActionArea = styled('div', {
   base: {
     display: 'flex',
     alignItems: 'center',
     gap: '2',
+    animationName: '--fade-in',
+    animationDuration: '200ms',
+    animationTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    animationFillMode: 'both',
+    animationPlayState: 'paused',
+    '&[data-revealed="true"]': {
+      animationPlayState: 'initial',
+    },
   },
 });
 
@@ -75,6 +90,8 @@ const DrawerArea = styled('div', {
 });
 
 export const SiteHeader: FC<SiteHeaderProps> = ({ ...rest }) => {
+  const hydrated = useHydrated();
+
   return (
     <Root {...rest}>
       <Layout>
@@ -82,8 +99,8 @@ export const SiteHeader: FC<SiteHeaderProps> = ({ ...rest }) => {
           <Link href="/">airRnot.dev</Link>
         </Logo>
         <Nav>
-          <LinkArea></LinkArea>
-          <ActionArea>
+          {/* <LinkArea></LinkArea> */}
+          <ActionArea data-revealed={hydrated}>
             <SiteThemeSwitchDropdown />
             <ButtonLink aria-label="GitHub" href="#" variant="ghost">
               <SiGithub />

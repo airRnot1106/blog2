@@ -5,6 +5,7 @@ import type { DefaultTheme } from '@wrksz/themes/client';
 import { Monitor, Moon, Sun } from 'lucide-react';
 import type { ComponentProps, FC } from 'react';
 
+import { styled } from '../../../../../styled-system/jsx';
 import { Button } from '../../../../components/button/_base/button';
 import { Dropdown } from '../../../../components/dropdown/_base/dropdown';
 
@@ -15,6 +16,16 @@ const THEME_OPTIONS = [
   { value: 'dark', label: 'Dark', icon: Moon },
   { value: 'system', label: 'System', icon: Monitor },
 ] as const satisfies { value: DefaultTheme; label: string; icon: typeof Sun }[];
+
+const IconSlot = styled('span', {
+  base: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '6',
+    height: '6',
+  },
+});
 
 export const SiteThemeSwitchDropdown: FC<SiteThemeSwitchDropdownProps> = (props) => {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -28,7 +39,7 @@ export const SiteThemeSwitchDropdown: FC<SiteThemeSwitchDropdownProps> = (props)
         aria-label="テーマを切り替える"
         render={
           <Button variant="ghost">
-            {TriggerIcon && <TriggerIcon aria-hidden="true" size={24} />}
+            <IconSlot>{TriggerIcon && <TriggerIcon aria-hidden="true" size={24} />}</IconSlot>
           </Button>
         }
       />
