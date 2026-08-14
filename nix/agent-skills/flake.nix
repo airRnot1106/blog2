@@ -4,6 +4,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs";
 
+    animations = {
+      url = "git+https://gist.github.com/tak-dcxi/b1870cfe73e3089a1e4aa7da19c3374a.git";
+      flake = false;
+    };
     anthropic-skills = {
       url = "github:anthropics/skills";
       flake = false;
@@ -40,6 +44,10 @@
         pkgs = nixpkgs.legacyPackages.${system};
 
         skills = [
+          {
+            name = "animations";
+            src = inputs.animations;
+          }
           {
             name = "component-implementation";
             src = ../../skills;
