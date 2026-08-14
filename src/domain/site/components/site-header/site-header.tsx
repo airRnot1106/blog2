@@ -27,6 +27,7 @@ const Layout = styled('div', {
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: '4',
+    animation: '--fade-in 4800ms cubic-bezier(0.22, 1, 0.36, 1)',
   },
 });
 

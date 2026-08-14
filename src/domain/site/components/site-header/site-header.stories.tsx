@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react';
-import { expect, within } from 'storybook/test';
+import { expect, waitFor, within } from 'storybook/test';
 
 import preview from '../../../../../.storybook/preview';
 import { styled } from '../../../../../styled-system/jsx';
@@ -18,7 +18,9 @@ export const Wide = meta.story({
   async play({ canvasElement }) {
     const canvas = within(canvasElement);
 
-    await expect(canvas.getByRole('link', { name: 'GitHub' })).toBeVisible();
+    await waitFor(async () => expect(canvas.getByRole('link', { name: 'GitHub' })).toBeVisible(), {
+      timeout: 10000,
+    });
     await expect(canvas.getByRole('link', { name: 'RSSフィード' })).toBeVisible();
     await expect(canvas.getByRole('button', { name: 'テーマを切り替える' })).toBeVisible();
     await expect(canvas.queryByRole('button', { name: 'メニューを開く' })).not.toBeInTheDocument();
@@ -34,7 +36,10 @@ export const Narrow = meta.story({
   async play({ canvasElement }) {
     const canvas = within(canvasElement);
 
-    await expect(canvas.getByRole('button', { name: 'メニューを開く' })).toBeVisible();
+    await waitFor(
+      async () => expect(canvas.getByRole('button', { name: 'メニューを開く' })).toBeVisible(),
+      { timeout: 10000 },
+    );
     await expect(canvas.queryByRole('link', { name: 'GitHub' })).not.toBeInTheDocument();
     await expect(canvas.queryByRole('link', { name: 'RSSフィード' })).not.toBeInTheDocument();
     await expect(

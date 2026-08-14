@@ -44,6 +44,9 @@ export default defineConfig({
           from: { transform: 'rotate(0deg)' },
           to: { transform: 'rotate(360deg)' },
         },
+        '--fade-in': {
+          from: { opacity: 'var(--fade-in--from-value, 0)' },
+        },
       },
       tokens: {
         fontSizes: {
