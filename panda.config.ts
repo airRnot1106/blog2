@@ -50,10 +50,8 @@ export default defineConfig({
       },
       tokens: {
         easings: {
-          // Appearance / disappearance (popover, dropdown, fade reveals).
           outQuint: { value: 'cubic-bezier(0.22, 1, 0.36, 1)' },
           outExpo: { value: 'cubic-bezier(0.16, 1, 0.3, 1)' },
-          // Movement of elements already on screen (icon rotation, etc).
           inOutQuint: { value: 'cubic-bezier(0.86, 0, 0.07, 1)' },
           inOutExpo: { value: 'cubic-bezier(0.87, 0, 0.13, 1)' },
         },

@@ -168,10 +168,6 @@ const PopupRoot = styled(BaseUIDrawer.Popup, {
     '&[data-swiping]': {
       transitionDuration: '0s',
     },
-    // The slide covers a large share of the viewport, so under reduced
-    // motion it's replaced with a plain opacity crossfade instead of being
-    // shortened — the swipe gesture itself is untouched, since it tracks
-    // the pointer 1:1 rather than autoplaying.
     '@media (prefers-reduced-motion: reduce)': {
       transitionProperty: 'opacity',
       transitionDuration: '150ms',
@@ -256,9 +252,6 @@ const TitleRoot = styled(BaseUIDrawer.Title, {
 
 const DescriptionRoot = styled(BaseUIDrawer.Description, {
   base: {
-    // `colors.muted` reads at ~2.8:1 against `colors.surface` in both
-    // themes — well under the 4.5:1 AA floor for this text size — so
-    // de-emphasis comes from weight instead of a low-contrast color.
     '--_color': 'var(--drawer-description--color, token(colors.text))',
     '--_font-size': 'var(--drawer-description--font-size, token(fontSizes.sm))',
 

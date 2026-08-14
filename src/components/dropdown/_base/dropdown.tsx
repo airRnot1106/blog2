@@ -156,9 +156,6 @@ const PopupRoot = styled(Menu.Popup, {
     '&[data-instant]': {
       transitionDuration: '0s',
     },
-    // Large/fast movement (the scale) is trimmed to a short opacity-only
-    // crossfade; the popup's position never actually travels, so scaling it
-    // in is the only part that reads as motion here.
     '@media (prefers-reduced-motion: reduce)': {
       transitionDuration: '50ms',
       '&[data-starting-style], &[data-ending-style]': {
@@ -191,10 +188,6 @@ const itemBaseStyle = {
   '&[data-highlighted]': {
     backgroundColor: 'var(--_highlighted-bg)',
   },
-  // `color: muted` read below AA contrast against the popup surface; fading
-  // the existing (already-passing) text color via opacity — the same
-  // convention `Button`/`ButtonLink`/`Drawer.Trigger` use for `:disabled` —
-  // keeps the item legible while still reading as inactive.
   '&[data-disabled]': {
     opacity: 0.6,
     cursor: 'not-allowed',
@@ -235,9 +228,6 @@ const GroupLabelRoot = styled(Menu.GroupLabel, {
     '--_font-weight': 'var(--dropdown-group-label--font-weight, bold)',
 
     padding: '2',
-    // `muted` reads at ~2.8:1 against the popup surface, well under the
-    // 4.5:1 AA floor at this size; the small/bold styling already
-    // differentiates it from item text without needing a dimmer color.
     color: 'text',
     fontSize: 'var(--_font-size)',
     fontWeight: 'var(--_font-weight)',

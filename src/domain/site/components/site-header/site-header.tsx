@@ -60,10 +60,6 @@ const Nav = styled('nav', {
 //   },
 // });
 
-// `SiteThemeSwitchDropdown`'s icon only resolves after hydration, while the
-// GitHub/RSS icons beside it are static and render on first paint. Fading
-// the whole cluster in together — instead of letting the theme icon pop in
-// alone a moment later — keeps the reveal timing consistent across the row.
 const ActionArea = styled('div', {
   base: {
     display: 'flex',
