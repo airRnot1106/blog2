@@ -256,11 +256,15 @@ const TitleRoot = styled(BaseUIDrawer.Title, {
 
 const DescriptionRoot = styled(BaseUIDrawer.Description, {
   base: {
-    '--_color': 'var(--drawer-description--color, token(colors.muted))',
+    // `colors.muted` reads at ~2.8:1 against `colors.surface` in both
+    // themes — well under the 4.5:1 AA floor for this text size — so
+    // de-emphasis comes from weight instead of a low-contrast color.
+    '--_color': 'var(--drawer-description--color, token(colors.text))',
     '--_font-size': 'var(--drawer-description--font-size, token(fontSizes.sm))',
 
     color: 'var(--_color)',
     fontSize: 'var(--_font-size)',
+    fontWeight: '300',
   },
 });
 
