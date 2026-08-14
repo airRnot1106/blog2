@@ -77,7 +77,7 @@ const TriggerRoot = styled(Menu.Trigger, {
     cursor: 'pointer',
     transitionProperty: 'background-color, color, border-color',
     transitionDuration: '150ms',
-    transitionTimingFunction: 'ease',
+    transitionTimingFunction: 'token(easings.outQuint)',
     '@media (any-hover: hover)': {
       '&:hover:not(:disabled)': {
         backgroundColor: 'var(--_hover-bg)',
@@ -117,7 +117,7 @@ const TriggerLayout = styled('span', {
       height: '4',
       transitionProperty: 'transform',
       transitionDuration: '150ms',
-      transitionTimingFunction: 'ease',
+      transitionTimingFunction: 'token(easings.inOutQuint)',
     },
   },
 });
@@ -148,13 +148,22 @@ const PopupRoot = styled(Menu.Popup, {
     transformOrigin: 'var(--transform-origin)',
     transitionProperty: 'transform, opacity',
     transitionDuration: '150ms',
-    transitionTimingFunction: 'ease-out',
+    transitionTimingFunction: 'token(easings.outQuint)',
     '&[data-starting-style], &[data-ending-style]': {
       opacity: 0,
       transform: 'scale(0.95)',
     },
     '&[data-instant]': {
       transitionDuration: '0s',
+    },
+    // Large/fast movement (the scale) is trimmed to a short opacity-only
+    // crossfade; the popup's position never actually travels, so scaling it
+    // in is the only part that reads as motion here.
+    '@media (prefers-reduced-motion: reduce)': {
+      transitionDuration: '50ms',
+      '&[data-starting-style], &[data-ending-style]': {
+        transform: 'none',
+      },
     },
   },
 });
@@ -178,7 +187,7 @@ const itemBaseStyle = {
   cursor: 'pointer',
   transitionProperty: 'background-color, color',
   transitionDuration: '100ms',
-  transitionTimingFunction: 'ease',
+  transitionTimingFunction: 'token(easings.outQuint)',
   '&[data-highlighted]': {
     backgroundColor: 'var(--_highlighted-bg)',
   },

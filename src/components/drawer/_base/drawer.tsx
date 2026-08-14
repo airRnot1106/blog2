@@ -88,7 +88,7 @@ const TriggerRoot = styled(BaseUIDrawer.Trigger, {
     cursor: 'pointer',
     transitionProperty: 'background-color, color, border-color',
     transitionDuration: '150ms',
-    transitionTimingFunction: 'ease',
+    transitionTimingFunction: 'token(easings.outQuint)',
     '@media (any-hover: hover)': {
       '&:hover:not(:disabled)': {
         backgroundColor: 'var(--_hover-bg)',
@@ -115,7 +115,7 @@ const BackdropRoot = styled(BaseUIDrawer.Backdrop, {
     backgroundColor: 'var(--_bg)',
     transitionProperty: 'opacity',
     transitionDuration: '250ms',
-    transitionTimingFunction: 'ease-out',
+    transitionTimingFunction: 'token(easings.outQuint)',
     '&[data-starting-style], &[data-ending-style]': {
       opacity: 0,
     },
@@ -162,12 +162,23 @@ const PopupRoot = styled(BaseUIDrawer.Popup, {
     boxShadow: '0 4px 16px color-mix(in oklab, token(colors.text) 12%, transparent)',
     overflowY: 'auto',
     overscrollBehavior: 'contain',
-    willChange: 'transform',
     transitionProperty: 'transform',
     transitionDuration: '350ms',
     transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)',
     '&[data-swiping]': {
       transitionDuration: '0s',
+    },
+    // The slide covers a large share of the viewport, so under reduced
+    // motion it's replaced with a plain opacity crossfade instead of being
+    // shortened — the swipe gesture itself is untouched, since it tracks
+    // the pointer 1:1 rather than autoplaying.
+    '@media (prefers-reduced-motion: reduce)': {
+      transitionProperty: 'opacity',
+      transitionDuration: '150ms',
+      transitionTimingFunction: 'token(easings.outQuint)',
+      '&[data-starting-style], &[data-ending-style]': {
+        opacity: 0,
+      },
     },
   },
   variants: {
@@ -279,7 +290,7 @@ const CloseRoot = styled(BaseUIDrawer.Close, {
     cursor: 'pointer',
     transitionProperty: 'background-color, color, border-color',
     transitionDuration: '150ms',
-    transitionTimingFunction: 'ease',
+    transitionTimingFunction: 'token(easings.outQuint)',
     '@media (any-hover: hover)': {
       '&:hover:not(:disabled)': {
         backgroundColor: 'var(--_hover-bg)',

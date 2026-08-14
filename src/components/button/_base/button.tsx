@@ -43,7 +43,7 @@ const Root = styled(BaseUIButton, {
     cursor: 'pointer',
     transitionProperty: 'background-color, color, border-color',
     transitionDuration: '150ms',
-    transitionTimingFunction: 'ease',
+    transitionTimingFunction: 'token(easings.outQuint)',
     '@media (any-hover: hover)': {
       '&:hover:not(:disabled)': {
         backgroundColor: 'var(--_hover-bg)',

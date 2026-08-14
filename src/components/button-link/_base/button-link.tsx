@@ -36,7 +36,7 @@ const Root = styled(Link, {
     cursor: 'pointer',
     transitionProperty: 'background-color, color, border-color',
     transitionDuration: '150ms',
-    transitionTimingFunction: 'ease',
+    transitionTimingFunction: 'token(easings.outQuint)',
     '@media (any-hover: hover)': {
       '&:hover': {
         backgroundColor: 'var(--_hover-bg)',
