@@ -7,7 +7,7 @@ import { render, type RenderOptions } from 'satoru-render';
 const FONT_URL = 'https://cloud.ich1q.one/s/YiAfAKScqFgMDHj/download/ich1Q-hand-Regular.ttf';
 const FONT_PATH = 'private/ich1Q-hand-Regular.ttf';
 const FONT_FAMILY = 'ich1Q-hand';
-const OUT_DIR = 'public/images/ich1q';
+const OUT_DIR = 'src/images/ich1q';
 // satoru bakes a concrete color into the rendered fill attribute; this value is
 // discarded and replaced with currentColor below, so its actual value is irrelevant.
 const RENDER_FILL_COLOR = '#000000';
@@ -31,7 +31,7 @@ function printUsage(): void {
       '',
       'Required:',
       '  -t, --text <text>          Text to render',
-      '  -o, --out <filename.svg>   Output SVG filename (relative to public/ich1q/)',
+      '  -o, --out <filename.svg>   Output SVG filename (relative to src/images/ich1q/)',
       '',
       'Optional:',
       '  -w, --width <px>           Layout/canvas width (default: 1200)',

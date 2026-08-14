@@ -1,8 +1,8 @@
 import { expect, within } from 'storybook/test';
 
 import preview from '../../../../.storybook/preview';
-import AboutMark from '../../../../public/images/ich1q/about.svg';
 import { token } from '../../../../styled-system/tokens';
+import AboutMark from '../../../images/ich1q/about.svg';
 import { Heading } from './heading';
 
 const meta = preview.meta({
