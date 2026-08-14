@@ -151,7 +151,7 @@ const Layer = styled('div', {
 
 const Spinner = styled(LoaderCircle, {
   base: {
-    animation: 'spin 0.6s linear infinite',
+    animation: '--spin 0.6s linear infinite',
   },
   variants: {
     size: {
